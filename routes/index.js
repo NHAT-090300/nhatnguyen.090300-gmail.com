@@ -1,41 +1,38 @@
 var express = require('express');
 var router = express.Router();
+const {
+  renderRegister,
+  renderLogin,
+  renderUser,
+  renderIcon,
+  // renderTable,
+  renderMap,
+  renderNotificastion,
+  renderTypography,
+  renderUpgrade,
+  renderRtl
+} = require('../app/User/user.controller');
+const {
+  registerMethod,
+  loginMethod,
+  logOut,
+  userIsAuth,
+  userIsNotAuth,
+  renderHomepage
+} = require('../app/Admin/controller')
+router.get('/logOut',logOut);
+router.get('/register',userIsAuth,renderRegister);
+router.post('/register',userIsAuth,registerMethod);
+router.get('/login',userIsAuth,renderLogin);
+router.post('/login',userIsAuth,loginMethod);
+router.get('/user',userIsNotAuth,renderUser);
+router.get('/',userIsNotAuth,renderHomepage);
+router.get('/icons',userIsNotAuth,renderIcon);
+// router.get('/table',userIsNotAuth,renderTable);
+router.get('/map',userIsNotAuth,renderMap);
+router.get('/notifications',userIsNotAuth,renderNotificastion);
+router.get('/typography',userIsNotAuth,renderTypography);
+router.get('/upgrade',userIsNotAuth,renderUpgrade);
+router.get('/rtl',userIsNotAuth,renderRtl);
 
-  router.get( '/login', (req, res) => {
-    res.render('pages/login', {layout: false});
-  });
-  router.get( '/register', (req, res) => {
-    res.render('pages/register', {layout: false});
-  });
-  router.get( '/', (req, res) => {
-    res.render('pages/dashboard');
-  });
-  router.get( '/user', (req, res) => {
-    res.render('pages/user');
-  });
-  router.get( '/icons', (req, res) => {
-    res.render('pages/icons');
-  });
-  router.get( '/user', (req, res) => {
-    res.render('pages/user');
-  });
-  router.get( '/table', (req, res) => {
-    res.render('pages/tables');
-  });
-  router.get( '/map', (req, res) => {
-    res.render('pages/maps');
-  });
-  router.get( '/notifications', (req, res) => {
-    res.render('pages/notifications');
-  });
-  router.get( '/typography', (req, res) => {
-    res.render('pages/typography');
-  });
-  router.get( '/upgrade', (req, res) => {
-    res.render('pages/upgrade');
-  });
-  router.get( '/rtl', (req, res) => {
-    res.render('pages/rtl');
-  });
-// post
 module.exports = router;

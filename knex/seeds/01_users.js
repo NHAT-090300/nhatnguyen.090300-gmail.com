@@ -1,22 +1,24 @@
 
-exports.seed = function(knex) {
-  return knex('table_name').del()
-    .then(function () {
-      return knex('table_name').insert([
-        {
-          id: 1,
-          fullname: 'nguyen phuoc nhat',
-          username: 'nhat',
-          email: 'nigel@email.com',
-          password: 'dorwssap'
-        },
-        {
-          id: 2,
-          fullname: 'nguyen van nhat',
-          username: 'vannhat',
-          email: 'nakaz@email.com',
-          password: 'password1'
-        }
-      ]);
-    });
+exports.seed = function(knex, Promise) {
+  // Deletes ALL existing entries
+  return knex('users').del()
+  .then(function () {
+    // Inserts seed entries
+    return knex('users').insert([
+      {
+        id: 1,
+        fullname: 'John Doe',
+        username: 'jonh',
+        email: 'nigel@email.com',
+        password: 'dorwssap',
+      },
+      {
+        id: 2,
+        fullname: 'John Doe 1',
+        username: 'jonh 1',
+        email: 'nakaz@email.com',
+        password: 'password1',
+      }
+    ]);
+  });
 };

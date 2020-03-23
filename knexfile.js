@@ -1,15 +1,12 @@
-// Update with your config settings.
-
 module.exports = {
 
     development: {
-        client: 'pg',
+        client: 'mysql',
         connection: {
           host : '127.0.0.1',
-          post: '5432',
           user : 'root',
           password : '',
-          database : 'my_db',
+          database : 'db',
           charset: 'utf8'
         },
         migrations: {
